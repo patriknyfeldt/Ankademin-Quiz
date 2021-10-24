@@ -23,8 +23,10 @@ body{
 }
 #reloadButton{
     display: none;
+    margin-left: 75px;
 }
 #modeContainer{
+    margin-right: 75px;
     margin-left: auto;
 }
 
