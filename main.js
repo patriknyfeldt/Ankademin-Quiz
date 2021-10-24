@@ -2,10 +2,10 @@ const listOfQuestions = [
     {
         questionnr: "Fråga 1",
         question: "Man får använda två av nedanstående vindruvor när man producerar champagne, vilka två?",
-        answer1: "Pinot noir",
+        answer1: "Pinot Noir",
         answer2: "Sauvignon Blanc",
         answer3: "Pinot Meunier",
-        rightAnswer: "answer1" + "answer3"
+        rightAnswer: "Pinot Noir" + "Pinot Meunier"
     },
     {
         questionnr:"Fråga 2",
@@ -120,7 +120,7 @@ let start = () => {
             checkBoxLabel3.innerHTML = listOfQuestions[0].answer3;
     }
 
- let nextQuestion = () => {
+let nextQuestion = () => {
         if(listOfQuestions.length === 0){
             answerBtn.style.display = "none";
             radioButtonContainer.style.display = "none";
@@ -142,6 +142,7 @@ let start = () => {
                     scoreMsg.style.color = "orange";
                 }
                 startStopContainer.appendChild(scoreMsg);
+                startStopContainer.removeChild(seeResultBtn);
             })
             
         }
@@ -155,9 +156,50 @@ let start = () => {
         label3.innerHTML = listOfQuestions[0].answer3;
         } 
     }
-
-
     
+let firstQuestionEvent = () => {
+        let arrayOfCheckedBoxes = [];
+
+        checkBoxes.forEach((box) => {
+                if(box.checked){
+                    arrayOfCheckedBoxes.push(box.value);
+                    let answer = arrayOfCheckedBoxes[0] + arrayOfCheckedBoxes[1]; 
+                    if(answer === listOfQuestions[0].rightAnswer){
+                        rightAnswers.push(answer);
+                    }
+                }
+            })
+        
+            if(arrayOfCheckedBoxes.length === 2){
+            listOfQuestions.shift();
+            nextQuestion();
+            }
+            else{
+            alert("Du måste välja två alternativ!");
+            }
+    }
+    
+let questionEvent = () => {
+        let arrayOfCheckedButtons = [];
+    
+            optionButtons.forEach((btn) => {
+                if(btn.checked){
+                    arrayOfCheckedButtons.push(btn.value);
+                    if(btn.value === listOfQuestions[0].rightAnswer){
+                    rightAnswers.push(btn.value);
+                }
+                btn.checked = false;
+            }
+    
+        })
+        if(arrayOfCheckedButtons.length !== 0){
+        listOfQuestions.shift();
+        nextQuestion();
+        }
+        else{
+            alert("Du måste välja ett alternativ!");
+        }
+    }
 
 modeBtn.addEventListener('click', () => {
     body.classList.toggle("darklight");
@@ -169,33 +211,13 @@ reloadBtn.addEventListener('click', () => {
 startBtn.addEventListener('click', start);
 
 answerBtn.addEventListener('click', () => {
-    let arrayOfCheckedBoxes = [];
 
     if(listOfQuestions.length === 10){
-        checkBoxes.forEach((box) => {
-            if(box.checked){
-                arrayOfCheckedBoxes.push(box.value);
-                let answer = arrayOfCheckedBoxes[0] + arrayOfCheckedBoxes[1]; 
-                if(answer === listOfQuestions[0].rightAnswer){
-                    rightAnswers.push(answer);
-                }
-            }
-        })
-    }
-    
-    optionButtons.forEach((btn) => {
-    if(btn.checked){
-            if(btn.value === listOfQuestions[0].rightAnswer){
-                rightAnswers.push(btn.value);
-            }
-            btn.checked = false;
-        }
-    
-    })
-    
-    listOfQuestions.shift();
-    nextQuestion();
-
+        firstQuestionEvent();
+}
+    else{
+        questionEvent();
+}
 });
 
 
