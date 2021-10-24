@@ -27,3 +27,6 @@ body{
 .radioButtons{
     display: none;
 }
+#reloadButton{
+    margin-top: 100px;
+}
