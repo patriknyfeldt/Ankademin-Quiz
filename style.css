@@ -18,15 +18,19 @@ body{
 .checkBoxContainer{
     display: none;
 }
-#modeDiv{
-    text-align: right;
+#topDiv{
+    display: flex;
 }
+#reloadButton{
+    display: none;
+}
+#modeContainer{
+    margin-left: auto;
+}
+
 #answerContainer{
     display: none;
 }
 .radioButtons{
     display: none;
-}
-#reloadButton{
-    margin-top: 100px;
 }

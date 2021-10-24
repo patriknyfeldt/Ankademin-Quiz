@@ -106,18 +106,20 @@ let rightAnswers = [];
 
 let start = () => {
 
+    reloadBtn.style.display = "block";
     radioButtonContainer.style.display = "block";
     answerContainer.style.display = "block";
     questions.style.display = "block";
-    startBtn.style.display = "none";
+    checkBoxContainer.style.display = "block";
 
-            radioButtonContainer.style.display = "none";
-            checkBoxContainer.style.display = "block";
-            questionHeading.innerHTML = listOfQuestions[0].questionnr;
-            question.innerHTML = listOfQuestions[0].question;
-            checkBoxLabel1.innerHTML = listOfQuestions[0].answer1;
-            checkBoxLabel2.innerHTML = listOfQuestions[0].answer2;
-            checkBoxLabel3.innerHTML = listOfQuestions[0].answer3;
+    startBtn.style.display = "none";
+    radioButtonContainer.style.display = "none";
+
+        questionHeading.innerHTML = listOfQuestions[0].questionnr;
+        question.innerHTML = listOfQuestions[0].question;
+        checkBoxLabel1.innerHTML = listOfQuestions[0].answer1;
+        checkBoxLabel2.innerHTML = listOfQuestions[0].answer2;
+        checkBoxLabel3.innerHTML = listOfQuestions[0].answer3;
     }
 
 let nextQuestion = () => {
