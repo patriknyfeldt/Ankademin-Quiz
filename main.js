@@ -140,7 +140,7 @@ let nextQuestion = () => {
                 if(rightAnswers.length > 10 * 0.75){
                     scoreMsg.style.color = "green";
                 }
-                else if(rightAnswers.length > 10 * 0.5){
+                else if(rightAnswers.length >= 10 * 0.5){
                     scoreMsg.style.color = "orange";
                 }
                 startStopContainer.appendChild(scoreMsg);
@@ -213,7 +213,6 @@ reloadBtn.addEventListener('click', () => {
 startBtn.addEventListener('click', start);
 
 answerBtn.addEventListener('click', () => {
-
     if(listOfQuestions.length === 10){
         firstQuestionEvent();
 }

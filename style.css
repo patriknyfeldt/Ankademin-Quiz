@@ -1,5 +1,5 @@
 body{
-    background-color: blanchedalmond;
+    background-color: rgb(178, 205, 236);
     color: rgb(4, 4, 41);
 }
 #heading{
@@ -7,7 +7,7 @@ body{
 }
 .darklight{
     background-color:rgb(4, 4, 41);
-    color: blanchedalmond;
+    color: rgb(178, 205, 236);
 }
 #container{
     text-align: center;
